@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="cointainer">
+        <div class="calculator">
+            <input type="text" placeholder="0" id="outputscreen">
+            <button id="clear">Cl</button> 
+            <button id="clear">DEL</button> 
+            <button id="value">%</button> 
+            <button id="value">/</button> 
+            <button >7</button> 
+            <button >8</button> 
+            <button >9</button> 
+            <button id="value">*</button> 
+            <button >4</button> 
+            <button >5</button> 
+            <button >6</button> 
+            <button id="value">-</button> 
+            <button >1</button> 
+            <button >2</button> 
+            <button >3</button> 
+            <button id="value">+</button> 
+            <button >.</button> 
+            <button >0</button> 
+            <button id="equal">=</button> 
+       </div>
+   </div>
+   <script>
+        let calculator = document.querySelector('.calculator');
+            let buttons = calculator.querySelectorAll('button');
+            let outputscreen = document.getElementById('outputscreen');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    let buttonText = this.innerText;
+
+                    if (buttonText === '=') {
+                        try {
+                            outputscreen.value = eval(outputscreen.value);
+                        } catch (e) {
+                            outputscreen.value = 'Error';
+                        }
+                    } else if (buttonText === 'Cl') {
+                        outputscreen.value = '';
+                    } else if (buttonText === 'DEL') {
+                        outputscreen.value = outputscreen.value.slice(0, -1);
+                    } else {
+                        outputscreen.value += buttonText;
+                    }
+                });
+            });
+   </script>
+    
+</body>
+</html>
